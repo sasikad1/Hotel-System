@@ -62,8 +62,7 @@ public class CustomerRepository {
         try {
             CustomerEntity yourEntity = session.get(CustomerEntity.class, entity.getId());
     
-            session.update(yourEntity);
-            transaction.commit();
+            session.merge(yourEntity);
             return true;
         } catch (Exception e) {
             transaction.rollback();

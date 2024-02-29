@@ -48,6 +48,7 @@ public class AdminHomeView extends javax.swing.JFrame {
         btnRoomCate1 = new javax.swing.JButton();
         btnRoomCate2 = new javax.swing.JButton();
         btnPackage = new javax.swing.JButton();
+        btnRoomCate3 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -183,19 +184,32 @@ public class AdminHomeView extends javax.swing.JFrame {
             }
         });
 
+        btnRoomCate3.setBackground(new java.awt.Color(0, 51, 51));
+        btnRoomCate3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRoomCate3.setForeground(new java.awt.Color(255, 255, 255));
+        btnRoomCate3.setText("Rooms  Mangement");
+        btnRoomCate3.setActionCommand("Rooms Mangement");
+        btnRoomCate3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRoomCate3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(287, 287, 287)
+                .addGap(13, 13, 13)
+                .addComponent(btnRoomCate3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnRoomCate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRoomCate1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRoomCate2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnPackage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +217,9 @@ public class AdminHomeView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnRoomCate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRoomCate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRoomCate3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnRoomCate1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -251,6 +267,11 @@ public class AdminHomeView extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btnPackageActionPerformed
 
+    private void btnRoomCate3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoomCate3ActionPerformed
+       new RoomView().setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btnRoomCate3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -291,6 +312,7 @@ public class AdminHomeView extends javax.swing.JFrame {
     private javax.swing.JButton btnRoomCate;
     private javax.swing.JButton btnRoomCate1;
     private javax.swing.JButton btnRoomCate2;
+    private javax.swing.JButton btnRoomCate3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JFrame jFrame1;
