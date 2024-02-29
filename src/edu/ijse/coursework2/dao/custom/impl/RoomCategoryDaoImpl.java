@@ -44,13 +44,13 @@ public class RoomCategoryDaoImpl implements RoomCategoryDao {
     @Override
     public RoomCategoryEntity get(Integer id) throws Exception {
         ResultSet rst = CrudUtil.executeQuery("SELECT * FROM roomcategory WHERE room_cate_id=?", id);
-        while(rst.next()){
-            return new RoomCategoryEntity(
-                    rst.getInt("room_cate_id"),
-                    rst.getString("room_cate_name"),
-                    rst.getString("room_cate_description"),
-                    rst.getString("room_cate_amount"));
-        }
+//        while(rst.next()){
+//            return new RoomCategoryEntity(
+//                    rst.getInt("room_cate_id"),
+//                    rst.getString("room_cate_name"),
+//                    rst.getString("room_cate_description"),
+//                    rst.getString("room_cate_amount"));
+//        }
         return null;
     }
     
@@ -58,13 +58,13 @@ public class RoomCategoryDaoImpl implements RoomCategoryDao {
     public List<RoomCategoryEntity> getAll() throws Exception {
         ArrayList<RoomCategoryEntity> roomCategoryEntitys = new ArrayList<>();
         ResultSet rst = CrudUtil.executeQuery("SELECT * FROM roomcategory");
-        while(rst.next()){
-            roomCategoryEntitys.add(new RoomCategoryEntity(
-                rst.getInt("room_cate_id"),
-                rst.getString("room_cate_name"),
-                rst.getString("room_cate_description"),
-                rst.getString("room_cate_amount")));
-        }
+//        while(rst.next()){
+//            roomCategoryEntitys.add(new RoomCategoryEntity(
+//                rst.getInt("room_cate_id"),
+//                rst.getString("room_cate_name"),
+//                rst.getString("room_cate_description"),
+//                rst.getString("room_cate_amount")));
+//        }
         return roomCategoryEntitys;
     }
     
