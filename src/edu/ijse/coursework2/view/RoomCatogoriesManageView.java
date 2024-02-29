@@ -351,12 +351,12 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
 
     private void saveRoomsCategory() {
         try {
-            String txt = txtAmount.getText();
-            int intValue = Integer.parseInt(txt);
+            String txtAmountString=txtAmount.getText();  
+            int txtAmountInteger=Integer.parseInt(txtAmountString); 
             RoomCategoryDto dto = new RoomCategoryDto(
                     txtName.getText(),
                     txtDesc.getText(),
-                    intValue);
+                    txtAmountInteger);
 
             String resp = roomCategoryController.saveRoomCategory(dto);
             loadRoomCategory();
@@ -374,79 +374,81 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
     }
 
     private void loadRoomCategory() {
-//        try {
-//            String columns[] = {"Id", "Name", "Description", "Amount"};
-//            DefaultTableModel dtm = new DefaultTableModel((columns), 0) {
-//                public boolean isCellEditable(int row, int column) {
-//                    return false;
-//                }
-//            };
-//            tblRoomCate.setModel(dtm);
-//
-//            List<RoomCategoryDto> roomCategoryDtos = roomCategoryController.getAll();
-//
-//            for (RoomCategoryDto roomCategoryDto : roomCategoryDtos) {
-//                Object[] rowData = {
-//                    roomCategoryDto.getRoom_cate_id(),
-//                    roomCategoryDto.getRoom_cate_name(),
-//                    roomCategoryDto.getRoom_cate_description(),
-//                    roomCategoryDto.getRoom_cate_amount()
-//                };
-//                dtm.addRow(rowData);
-//            }
-//        } catch (Exception ex) {
-//            Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(this, "Error at loading Room Category Data");
-//        }
+        try {
+            String columns[] = {"Id", "Name", "Description", "Amount"};
+            DefaultTableModel dtm = new DefaultTableModel((columns), 0) {
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            tblRoomCate.setModel(dtm);
+
+            List<RoomCategoryDto> roomCategoryDtos = roomCategoryController.getAll();
+
+            for (RoomCategoryDto roomCategoryDto : roomCategoryDtos) {
+                Object[] rowData = {
+                    roomCategoryDto.getRoom_cate_id(),
+                    roomCategoryDto.getRoom_cate_name(),
+                    roomCategoryDto.getRoom_cate_description(),
+                    roomCategoryDto.getRoom_cate_amount()
+                };
+                dtm.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error at loading Room Category Data");
+        }
 
     }
 
     private void searchRoomsCategory() {
-//        Integer id = tblRoomCate.getValueAt(tblRoomCate.getSelectedRow(), 0).hashCode();
-//        try {
-//            RoomCategoryDto dto = roomCategoryController.get(id);
-//            if (dto != null) {
-//                txtName.setText(dto.getRoom_cate_name());
-//                txtDesc.setText(dto.getRoom_cate_description());
-//                 Integer.parseInt(txtAmount.setText(dto.getRoom_cate_amount()));
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Error at loading Room Category Data");
-//            }
-//        } catch (Exception ex) {
-//            Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        Integer id = tblRoomCate.getValueAt(tblRoomCate.getSelectedRow(), 0).hashCode();
+//        String txtAmountString=txtAmount.getText();  
+//        int txtAmountInteger=Integer.parseInt(txtAmountString); 
+        try {
+            RoomCategoryDto dto = roomCategoryController.get(id);
+            if (dto != null) {
+                txtName.setText(dto.getRoom_cate_name());
+                txtDesc.setText(dto.getRoom_cate_description());
+                txtAmount.setText(Integer.toString(dto.getRoom_cate_amount()));
+            } else {
+                JOptionPane.showMessageDialog(this, "Error at loading Room Category Data");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void updateRoomsCategory() {
-//        Integer id = tblRoomCate.getValueAt(tblRoomCate.getSelectedRow(), 0).hashCode();
-//        try {
-//            RoomCategoryDto dto = new RoomCategoryDto();
-//            dto.setRoom_cate_id(id);
-//            dto.setRoom_cate_name(txtName.getText());
-//            dto.setRoom_cate_description(txtDesc.getText());
-////            dto.setRoom_cate_amount(txtAmount.getText());
-//
-//            String resp = roomCategoryController.update(dto);
-//            JOptionPane.showMessageDialog(this, resp);
-//            loadRoomCategory();
-//            clear();
-//        } catch (Exception ex) {
-//            Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(this, ex.getMessage());
-//        }
+        Integer id = tblRoomCate.getValueAt(tblRoomCate.getSelectedRow(), 0).hashCode();
+        try {
+            RoomCategoryDto dto = new RoomCategoryDto();
+            dto.setRoom_cate_id(id);
+            dto.setRoom_cate_name(txtName.getText());
+            dto.setRoom_cate_description(txtDesc.getText());
+//            dto.setRoom_cate_amount(txtAmount.getText());
+
+            String resp = roomCategoryController.update(dto);
+            JOptionPane.showMessageDialog(this, resp);
+            loadRoomCategory();
+            clear();
+        } catch (Exception ex) {
+            Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }
 
     private void deleteRoomsCategory() {
-//        try {
-//            Integer id = tblRoomCate.getValueAt(tblRoomCate.getSelectedRow(), 0).hashCode();
-//            String resp = roomCategoryController.delete(id);
-//            JOptionPane.showMessageDialog(this, resp);
-//            loadRoomCategory();
-//            clear();
-//        } catch (Exception ex) {
-//            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
-//            JOptionPane.showMessageDialog(this, ex.getMessage());
-//        }
+        try {
+            Integer id = tblRoomCate.getValueAt(tblRoomCate.getSelectedRow(), 0).hashCode();
+            String resp = roomCategoryController.delete(id);
+            JOptionPane.showMessageDialog(this, resp);
+            loadRoomCategory();
+            clear();
+        } catch (Exception ex) {
+            Logger.getLogger(CustomerView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
     }
 
 }

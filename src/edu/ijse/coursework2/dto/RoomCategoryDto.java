@@ -66,6 +66,4 @@ public class RoomCategoryDto {
     public String toString() {
         return "RoomCategoryDto{" + "room_cate_id=" + room_cate_id + ", room_cate_name=" + room_cate_name + ", room_cate_description=" + room_cate_description + ", room_cate_amount=" + room_cate_amount + '}';
     }
-
-   
 }
