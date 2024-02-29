@@ -8,6 +8,7 @@ import edu.ijse.coursework2.service.custom.impl.AdminServiceImpl;
 import edu.ijse.coursework2.service.custom.impl.CustomerServiceImpl;
 import edu.ijse.coursework2.service.custom.impl.PackageServiceImpl;
 import edu.ijse.coursework2.service.custom.impl.RoomCategoryServiceImpl;
+import edu.ijse.coursework2.service.custom.impl.RoomServiceImpl;
 
 /**
  *
@@ -39,12 +40,14 @@ public class ServiceFactory {
                 return new CustomerServiceImpl();
             case PACKAGE:
                 return new PackageServiceImpl();
+             case ROOM:
+                return new RoomServiceImpl();
             default:
                 return null;
         }
     }
 
     public enum ServiceType {
-        ADMIN, ROOMCATEGORY, CUSTOMER, PACKAGE
+        ADMIN, ROOMCATEGORY, CUSTOMER, PACKAGE, ROOM
     }
 }

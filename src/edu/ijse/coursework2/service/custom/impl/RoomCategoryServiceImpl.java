@@ -36,7 +36,6 @@ public class RoomCategoryServiceImpl implements RoomCategoryService {
         } else {
             return "Faild";
         }
-
     }
 
     @Override

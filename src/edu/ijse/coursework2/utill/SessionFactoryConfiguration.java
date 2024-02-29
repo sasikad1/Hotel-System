@@ -7,6 +7,7 @@ package edu.ijse.coursework2.utill;
 import edu.ijse.coursework2.entity.CustomerEntity;
 import edu.ijse.coursework2.entity.PackageEntity;
 import edu.ijse.coursework2.entity.RoomCategoryEntity;
+import edu.ijse.coursework2.entity.RoomEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -23,7 +24,8 @@ public class SessionFactoryConfiguration {
         Configuration configuration = new Configuration().configure()
                 .addAnnotatedClass(CustomerEntity.class)
                 .addAnnotatedClass(PackageEntity.class)
-                .addAnnotatedClass(RoomCategoryEntity.class);
+                .addAnnotatedClass(RoomCategoryEntity.class)
+                .addAnnotatedClass(RoomEntity.class);;
         sessionFactory=configuration.buildSessionFactory();
     }
     
