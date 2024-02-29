@@ -4,10 +4,13 @@
  */
 package edu.ijse.coursework2.service.custom.impl;
 
+import edu.ijse.coursework2.dto.RoomCategoryDto;
 import edu.ijse.coursework2.dto.RoomDto;
+import edu.ijse.coursework2.entity.RoomCategoryEntity;
 import edu.ijse.coursework2.entity.RoomEntity;
 import edu.ijse.coursework2.repository.RoomRepository;
 import edu.ijse.coursework2.service.custom.RoomService;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,6 +49,13 @@ public class RoomServiceImpl implements RoomService{
 
     @Override
     public List<RoomDto> getAll() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+         List<RoomDto> roomDtos = new ArrayList<>();
+        List<RoomEntity> roomEntitys = roomRepository.getAllRoom();
+
+        for (RoomEntity e : roomEntitys) {
+            roomDtos.add(new RoomDto(
+                    e.getRoomCategory(),
+                    e.getRoomDescription()));
+        }
+        return roomDtos;}
 }

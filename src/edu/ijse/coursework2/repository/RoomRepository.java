@@ -7,6 +7,8 @@ package edu.ijse.coursework2.repository;
 import edu.ijse.coursework2.entity.RoomCategoryEntity;
 import edu.ijse.coursework2.entity.RoomEntity;
 import edu.ijse.coursework2.utill.SessionFactoryConfiguration;
+import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -27,5 +29,12 @@ public class RoomRepository {
             transaction.rollback();
             return false;
         }
+    }
+     
+      public List<RoomEntity> getAllRoom() {
+        String hql = "FROM RoomCategoryEntity";
+        Query query = session.createQuery(hql);
+        List<RoomEntity> roomEntities = query.list();
+        return roomEntities;
     }
 }

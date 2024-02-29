@@ -170,7 +170,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tblAdmin">
+            <Component class="javax.swing.JTable" name="tblRoom">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="99" green="99" red="0" type="rgb"/>
@@ -185,7 +185,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblAdminMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblRoomMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -245,7 +245,7 @@
                           <Component id="jLabel3" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="comboDesc" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnSave" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="btnUpdate" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>

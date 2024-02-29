@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -47,7 +48,7 @@ public class RoomView extends javax.swing.JFrame {
         btnHome = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblAdmin = new javax.swing.JTable();
+        tblRoom = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -116,8 +117,8 @@ public class RoomView extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
-        tblAdmin.setBackground(new java.awt.Color(0, 153, 153));
-        tblAdmin.setModel(new javax.swing.table.DefaultTableModel(
+        tblRoom.setBackground(new java.awt.Color(0, 153, 153));
+        tblRoom.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -128,12 +129,12 @@ public class RoomView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblRoom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblAdminMouseClicked(evt);
+                tblRoomMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblAdmin);
+        jScrollPane1.setViewportView(tblRoom);
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -225,7 +226,7 @@ public class RoomView extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(147, 147, 147)
+                .addGap(135, 135, 135)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,9 +285,9 @@ public class RoomView extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btnHomeActionPerformed
 
-    private void tblAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblAdminMouseClicked
+    private void tblRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRoomMouseClicked
 //        searchAdmin();
-    }//GEN-LAST:event_tblAdminMouseClicked
+    }//GEN-LAST:event_tblRoomMouseClicked
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         saveRoom();
@@ -355,7 +356,7 @@ public class RoomView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl;
-    private javax.swing.JTable tblAdmin;
+    private javax.swing.JTable tblRoom;
     // End of variables declaration//GEN-END:variables
 
     public void getRoomCategoryCombo() throws Exception {
@@ -384,7 +385,7 @@ public class RoomView extends javax.swing.JFrame {
 
             String resp = roomController.saveRoom(dto);
 //            loadRoomCategory();
-//            clear();
+            clear();
             JOptionPane.showMessageDialog(this, resp);
         } catch (Exception ex) {
             Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
@@ -392,6 +393,35 @@ public class RoomView extends javax.swing.JFrame {
         }
     }
 
-   
+    private void clear() {
+        comboCategory.setSelectedIndex(0);
+        comboDesc.setText("");
+    }
+    
+    private void loadRoom() {
+        try {
+            String columns[] = {"Id", "Category", "Description"};
+            DefaultTableModel dtm = new DefaultTableModel((columns), 0) {
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            tblRoom.setModel(dtm);
+
+            List<RoomDto> roomDtos = roomController.getAll();
+
+            for (RoomDto roomDto : roomDtos) {
+                Object[] rowData = {
+                    roomDto.getRoomCategory(),
+                    roomDto.getRoomDescription()
+                };
+                dtm.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error at loading Room Category Data");
+        }
+
+    }
 
 }
