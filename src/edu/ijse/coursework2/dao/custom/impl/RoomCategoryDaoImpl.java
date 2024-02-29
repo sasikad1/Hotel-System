@@ -20,17 +20,19 @@ public class RoomCategoryDaoImpl implements RoomCategoryDao {
     @Override
     public boolean save(RoomCategoryEntity t) throws Exception {
         
-        return CrudUtil.executeUpdate("INSERT INTO roomcategory VALUES(?,?,?)",
+        return CrudUtil.executeUpdate("INSERT INTO roomcategory VALUES(?,?,?,?)",
                 null,
                 t.getRoom_cate_name(),
-                t.getRoom_cate_description());
+                t.getRoom_cate_description(),
+                t.getRoom_cate_amount());
     }
     
     @Override
     public boolean update(RoomCategoryEntity t) throws Exception {
-        return CrudUtil.executeUpdate("UPDATE roomcategory SET room_cate_name=? ,room_cate_description=? WHERE room_cate_id=?", 
+        return CrudUtil.executeUpdate("UPDATE roomcategory SET room_cate_name=? ,room_cate_description=?,room_cate_amount=? WHERE room_cate_id=?", 
                 t.getRoom_cate_name(),
                 t.getRoom_cate_description(),
+                t.getRoom_cate_amount(),
                 t.getRoom_cate_id());
     }
     
@@ -46,7 +48,8 @@ public class RoomCategoryDaoImpl implements RoomCategoryDao {
             return new RoomCategoryEntity(
                     rst.getInt("room_cate_id"),
                     rst.getString("room_cate_name"),
-                    rst.getString("room_cate_description"));
+                    rst.getString("room_cate_description"),
+                    rst.getString("room_cate_amount"));
         }
         return null;
     }
@@ -59,7 +62,8 @@ public class RoomCategoryDaoImpl implements RoomCategoryDao {
             roomCategoryEntitys.add(new RoomCategoryEntity(
                 rst.getInt("room_cate_id"),
                 rst.getString("room_cate_name"),
-                rst.getString("room_cate_description")));
+                rst.getString("room_cate_description"),
+                rst.getString("room_cate_amount")));
         }
         return roomCategoryEntitys;
     }

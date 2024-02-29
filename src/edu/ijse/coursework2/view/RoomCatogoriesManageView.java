@@ -53,7 +53,7 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
         btnUpdate = new javax.swing.JButton();
         txtDesc = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
-        txtDesc1 = new javax.swing.JTextField();
+        txtAmount = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -200,7 +200,7 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                             .addComponent(txtDesc)
-                            .addComponent(txtDesc1))))
+                            .addComponent(txtAmount))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -217,7 +217,7 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDesc1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(121, 121, 121)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -344,8 +344,8 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRoomCate;
+    private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtDesc;
-    private javax.swing.JTextField txtDesc1;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
 
@@ -353,7 +353,8 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
         try {
             RoomCategoryDto dto = new RoomCategoryDto(
                     txtName.getText(),
-                    txtDesc.getText());
+                    txtDesc.getText(),
+                    txtAmount.get());
 
             String resp = roomCategoryController.saveRoomCategory(dto);
             loadRoomCategory();
@@ -367,11 +368,12 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
     private void clear() {
         txtName.setText("");
         txtDesc.setText("");
+        txtAmount.setText("");
     }
 
     private void loadRoomCategory() {
         try {
-            String columns[] = {"Id", "Name", "Description"};
+            String columns[] = {"Id", "Name", "Description", "Amount"};
             DefaultTableModel dtm = new DefaultTableModel((columns), 0) {
                 public boolean isCellEditable(int row, int column) {
                     return false;
@@ -385,7 +387,8 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
                 Object[] rowData = {
                     roomCategoryDto.getRoom_cate_id(),
                     roomCategoryDto.getRoom_cate_name(),
-                    roomCategoryDto.getRoom_cate_description()
+                    roomCategoryDto.getRoom_cate_description(),
+                    roomCategoryDto.getRoom_cate_amount()
                 };
                 dtm.addRow(rowData);
             }
@@ -403,6 +406,7 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
             if (dto != null) {
                 txtName.setText(dto.getRoom_cate_name());
                 txtDesc.setText(dto.getRoom_cate_description());
+                txtAmount.setText(dto.getRoom_cate_amount());
             } else {
                 JOptionPane.showMessageDialog(this, "Error at loading Room Category Data");
             }
@@ -418,6 +422,7 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
             dto.setRoom_cate_id(id);
             dto.setRoom_cate_name(txtName.getText());
             dto.setRoom_cate_description(txtDesc.getText());
+            dto.setRoom_cate_amount(txtAmount.getText());
 
             String resp = roomCategoryController.update(dto);
             JOptionPane.showMessageDialog(this, resp);

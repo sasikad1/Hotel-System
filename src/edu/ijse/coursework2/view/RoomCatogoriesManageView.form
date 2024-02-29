@@ -222,7 +222,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtName" pref="216" max="32767" attributes="0"/>
                                   <Component id="txtDesc" max="32767" attributes="0"/>
-                                  <Component id="txtDesc1" max="32767" attributes="0"/>
+                                  <Component id="txtAmount" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -246,7 +246,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="txtDesc1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="txtAmount" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -337,7 +337,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDesc1">
+            <Component class="javax.swing.JTextField" name="txtAmount">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>

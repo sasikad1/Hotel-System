@@ -24,7 +24,8 @@ public class RoomCategoryServiceImpl implements RoomCategoryService {
     public String saveRoomCategory(RoomCategoryDto roomCategoryDto) throws Exception {
         RoomCategoryEntity entity = new RoomCategoryEntity(
                 roomCategoryDto.getRoom_cate_name(),
-                roomCategoryDto.getRoom_cate_description());
+                roomCategoryDto.getRoom_cate_description(),
+                roomCategoryDto.getRoom_cate_amount());
         if (roomCategoryDao.save(entity)) {
             return "Successfully Saved";
         } else {
@@ -38,7 +39,8 @@ public class RoomCategoryServiceImpl implements RoomCategoryService {
         RoomCategoryEntity entity = new RoomCategoryEntity(
                 roomCategoryDto.getRoom_cate_id(),
                 roomCategoryDto.getRoom_cate_name(),
-                roomCategoryDto.getRoom_cate_description());
+                roomCategoryDto.getRoom_cate_description(),
+                roomCategoryDto.getRoom_cate_amount());
 
         if (roomCategoryDao.update(entity)) {
             return "Successfully Updated";
@@ -61,7 +63,8 @@ public class RoomCategoryServiceImpl implements RoomCategoryService {
         RoomCategoryEntity entity = roomCategoryDao.get(id);
         return new RoomCategoryDto(entity.getRoom_cate_id(),
                 entity.getRoom_cate_name(),
-                entity.getRoom_cate_description());
+                entity.getRoom_cate_description(),
+                entity.getRoom_cate_amount());
     }
 
     @Override
@@ -73,7 +76,8 @@ public class RoomCategoryServiceImpl implements RoomCategoryService {
             roomCategoryDtos.add(new RoomCategoryDto(
                     e.getRoom_cate_id(),
                     e.getRoom_cate_name(),
-                    e.getRoom_cate_description()));
+                    e.getRoom_cate_description(),
+                    e.getRoom_cate_amount()));
         }
         return roomCategoryDtos;
     }

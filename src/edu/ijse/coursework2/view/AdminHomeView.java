@@ -268,7 +268,11 @@ public class AdminHomeView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPackageActionPerformed
 
     private void btnRoomCate3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRoomCate3ActionPerformed
-       new RoomView().setVisible(true);
+        try {
+            new RoomView().setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(AdminHomeView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         setVisible(false);
     }//GEN-LAST:event_btnRoomCate3ActionPerformed
 
