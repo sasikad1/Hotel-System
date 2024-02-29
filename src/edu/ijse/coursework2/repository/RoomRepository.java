@@ -17,9 +17,10 @@ import org.hibernate.Transaction;
  * @author sasik
  */
 public class RoomRepository {
-     Session session = SessionFactoryConfiguration.getInstance().getSession();
-     
-     public boolean saveRoomCategory(RoomEntity entity) {
+
+    Session session = SessionFactoryConfiguration.getInstance().getSession();
+
+    public boolean saveRoomCategory(RoomEntity entity) {
         Transaction transaction = session.beginTransaction();
         try {
             session.save(entity);
@@ -30,9 +31,15 @@ public class RoomRepository {
             return false;
         }
     }
-     
-      public List<RoomEntity> getAllRoom() {
-        String hql = "FROM RoomCategoryEntity";
+
+    public RoomEntity getRoom(Integer id) {
+        RoomEntity roomEntity = session.get(RoomEntity.class, id);
+        System.out.println("aaaaaQQQQQQQQQQQaaaaaaaaa"+roomEntity.getRoomId());
+        return roomEntity;
+    }
+
+    public List<RoomEntity> getAllRoom() {
+        String hql = "FROM RoomEntity";
         Query query = session.createQuery(hql);
         List<RoomEntity> roomEntities = query.list();
         return roomEntities;

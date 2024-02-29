@@ -403,9 +403,9 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
 
     private void searchRoomsCategory() {
         Integer id = tblRoomCate.getValueAt(tblRoomCate.getSelectedRow(), 0).hashCode();
+        System.out.println("DDDDDDDDD"+id);
         try {
             RoomCategoryDto dto = roomCategoryController.get(id);
-            System.out.println("sssssssssssss"+dto.getRoom_cate_amount());
             if (dto != null) {
                 txtName.setText(dto.getRoom_cate_name());
                 txtDesc.setText(dto.getRoom_cate_description());

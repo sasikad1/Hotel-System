@@ -30,6 +30,7 @@ public class RoomView extends javax.swing.JFrame {
         roomCategoryController = new RoomCategoryController();
         roomController = new RoomController();
         initComponents();
+        loadRoom();
         getRoomCategoryCombo();
     }
 
@@ -286,7 +287,7 @@ public class RoomView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void tblRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRoomMouseClicked
-//        searchAdmin();
+        searchRooms();
     }//GEN-LAST:event_tblRoomMouseClicked
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -369,9 +370,8 @@ public class RoomView extends javax.swing.JFrame {
             Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, e);
         }
     }
-    
-    
-     private void selectCategoryCombo() {
+
+    private void selectCategoryCombo() {
         String value = comboCategory.getSelectedItem().toString();
         lbl.setText(value);
     }
@@ -384,7 +384,7 @@ public class RoomView extends javax.swing.JFrame {
             );
 
             String resp = roomController.saveRoom(dto);
-//            loadRoomCategory();
+            loadRoom();
             clear();
             JOptionPane.showMessageDialog(this, resp);
         } catch (Exception ex) {
@@ -397,7 +397,7 @@ public class RoomView extends javax.swing.JFrame {
         comboCategory.setSelectedIndex(0);
         comboDesc.setText("");
     }
-    
+
     private void loadRoom() {
         try {
             String columns[] = {"Id", "Category", "Description"};
@@ -422,6 +422,21 @@ public class RoomView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error at loading Room Category Data");
         }
 
+    }
+
+     private void searchRooms() {
+        Integer id = tblRoom.getValueAt(tblRoom.getSelectedRow(), 0).hashCode();
+         System.out.println("DDDDDDDDD"+id);
+        try {
+            RoomCategoryDto dto = roomCategoryController.get(id);
+            if (dto != null) {
+                comboDesc.setText(dto.getRoom_cate_description());
+            } else {
+                JOptionPane.showMessageDialog(this, "Error at loading Room Category Data");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
