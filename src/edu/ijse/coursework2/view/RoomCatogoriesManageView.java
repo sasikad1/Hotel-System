@@ -351,16 +351,16 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
 
     private void saveRoomsCategory() {
         try {
-            String txtAmountString=txtAmount.getText();  
-            int txtAmountInteger=Integer.parseInt(txtAmountString); 
             RoomCategoryDto dto = new RoomCategoryDto(
                     txtName.getText(),
                     txtDesc.getText(),
-                    txtAmountInteger);
+                    txtAmount.getText()
+            );
 
             String resp = roomCategoryController.saveRoomCategory(dto);
             loadRoomCategory();
             clear();
+            JOptionPane.showMessageDialog(this, resp);
         } catch (Exception ex) {
             Logger.getLogger(RoomCatogoriesManageView.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -403,14 +403,13 @@ public class RoomCatogoriesManageView extends javax.swing.JFrame {
 
     private void searchRoomsCategory() {
         Integer id = tblRoomCate.getValueAt(tblRoomCate.getSelectedRow(), 0).hashCode();
-//        String txtAmountString=txtAmount.getText();  
-//        int txtAmountInteger=Integer.parseInt(txtAmountString); 
         try {
             RoomCategoryDto dto = roomCategoryController.get(id);
+            System.out.println("sssssssssssss"+dto.getRoom_cate_amount());
             if (dto != null) {
                 txtName.setText(dto.getRoom_cate_name());
                 txtDesc.setText(dto.getRoom_cate_description());
-                txtAmount.setText(Integer.toString(dto.getRoom_cate_amount()));
+                txtAmount.setText(dto.getRoom_cate_amount());
             } else {
                 JOptionPane.showMessageDialog(this, "Error at loading Room Category Data");
             }

@@ -40,9 +40,9 @@ public class RoomCategoryEntity {
     private String room_cate_description;
     
     @Column(name="room_cate_amount", nullable = false,length = 30)
-    private Integer room_cate_amount;
+    private String room_cate_amount;
 
-    public RoomCategoryEntity(String room_cate_name, String room_cate_description, Integer room_cate_amount) {
+    public RoomCategoryEntity(String room_cate_name, String room_cate_description, String room_cate_amount) {
         this.room_cate_name = room_cate_name;
         this.room_cate_description = room_cate_description;
         this.room_cate_amount = room_cate_amount;

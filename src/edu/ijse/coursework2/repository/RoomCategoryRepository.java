@@ -22,6 +22,7 @@ public class RoomCategoryRepository {
 
     public boolean saveRoomCategory(RoomCategoryEntity entity) {
         Transaction transaction = session.beginTransaction();
+        System.out.println("ssssssssssssss"+entity.getRoom_cate_description());
         try {
             session.save(entity);
             transaction.commit();
